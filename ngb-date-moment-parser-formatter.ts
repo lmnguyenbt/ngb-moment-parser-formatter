@@ -84,7 +84,7 @@ export class NgbDateMomentParserFormatter extends NgbDateMmParserFormatter {
 		providers: [
         {
             provide: NgbDateParserFormatter,
-            useFactory: () => { return new NgbDateMomentParserFormatter("DD-MM-YYYY") }
+            useFactory: () => { return new NgbDateMomentParserFormatter("DD/MM/YYYY") }
         }
         ]
         ---
