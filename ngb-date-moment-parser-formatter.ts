@@ -28,18 +28,24 @@ export class NgbDateMomentParserFormatter extends NgbDateMmParserFormatter {
 					month: null,
 					day: null
 				};
+
+				//return new NgbDate(toInteger(dateParts[0]), null, null);
 			} else if ( dateParts.length === 2 && isNumber( dateParts[0] && isNumber( dateParts[1] ) ) ) {
 				return {
 					year: toInteger( dateParts[0] ),
 					month: toInteger( dateParts[1] ),
 					day: null
 				};
+
+				//return new NgbDate(toInteger(dateParts[0]), toInteger(dateParts[1]) - 1, null);
 			} else if ( dateParts.length === 3 && isNumber( dateParts[0] && isNumber( dateParts[1] ) && isNumber( dateParts[2] ) ) ) {
 				return {
 					year: toInteger( dateParts[0] ),
 					month: toInteger( dateParts[1] ),
 					day: toInteger( dateParts[2] )
 				};
+
+				//return new NgbDate(toInteger(dateParts[0]), toInteger(dateParts[1]) - 1, toInteger(dateParts[2]));
 			}
 
 			// Solution 2
@@ -82,6 +88,10 @@ export class NgbDateMomentParserFormatter extends NgbDateMmParserFormatter {
  *  @NgModule({
         ---
 		providers: [
+		{
+            provide: NgbDateAdapter,
+            useFactory: () => { return new NgbDateMomentAdapter("DD/MM/YYYY") }
+        }
         {
             provide: NgbDateParserFormatter,
             useFactory: () => { return new NgbDateMomentParserFormatter("DD/MM/YYYY") }
